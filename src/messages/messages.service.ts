@@ -1,12 +1,8 @@
 import { MessagesRepository } from './messages.repository';
 
 export class MessagesService {
-  messagesRepo: MessagesRepository;
-
-  constructor() {
-    // TODO: Refactor this using dependency injection
-    this.messagesRepo = new MessagesRepository();
-  }
+  // Automatically assign messagesRepo as a property to this class (TypeScript shorthand)
+  constructor(public messagesRepo: MessagesRepository) {}
 
   findOne(id: string) {
     return this.messagesRepo.findOne(id);
