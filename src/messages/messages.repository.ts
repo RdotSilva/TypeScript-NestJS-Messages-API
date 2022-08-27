@@ -33,4 +33,12 @@ export class MessagesRepository {
     // Add the new data to the JSON file
     await writeFile('messages.json', JSON.stringify(messages));
   }
+
+  async updateMessage(content: string, id: string) {
+    const contents = await readFile('messages.json', 'utf8');
+    const messages = JSON.parse(contents);
+    
+    messages[id] = { content };
+    await writeFile('messages.json', JSON.stringify(messages));
+  }
 }
