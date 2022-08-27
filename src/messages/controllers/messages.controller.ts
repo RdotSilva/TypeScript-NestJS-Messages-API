@@ -3,6 +3,7 @@ import {
   Get,
   Post,
   Body,
+  Put,
   Param,
   NotFoundException,
 } from '@nestjs/common';
@@ -33,4 +34,11 @@ export class MessagesController {
 
     return message;
   }
+
+  @Put(':id/update')
+  async updateMessage(@Param('id') id: string, @Body() body: CreateMessageDto): {
+    const message = await this.messagesService.findOne(id);
+    message = {...body}
+    // TODO: Add service
+  }  
 }
