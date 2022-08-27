@@ -17,4 +17,8 @@ export class MessagesService {
   create(content: string) {
     return this.messagesRepo.create(content);
   }
+
+  updateMessage(content: string, id: string) {
+    return this.messagesRepo.updateMessage(content, id)
+  }
 }
