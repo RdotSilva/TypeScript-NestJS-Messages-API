@@ -7,7 +7,7 @@ import {
   Param,
   NotFoundException,
 } from '@nestjs/common';
-import { CreateMessageDto } from '../dtos/create-message.dto';
+import { CreateMessageDto, UpdateMessageDto } from '../dtos/create-message.dto';
 import { MessagesService } from '../messages.service';
 
 @Controller('messages')
@@ -36,9 +36,7 @@ export class MessagesController {
   }
 
   @Put(':id/update')
-  async updateMessage(@Param('id') id: string, @Body() body: CreateMessageDto): {
-    const message = await this.messagesService.findOne(id);
-    message = {...body}
-    // TODO: Add service
+  updateMessage(@Param('id') id: string, @Body() body: UpdateMessageDto) {
+    return this.messagesService.updateMessage(id, body);
   }  
 }
