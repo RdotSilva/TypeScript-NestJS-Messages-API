@@ -21,4 +21,8 @@ export class MessagesService {
   updateMessage(content: string, id: string) {
     return this.messagesRepo.updateMessage(content, id)
   }
+
+  deleteMessage(id: string) {
+    return this.messagesRepo.deleteMessage(id);
+  }
 }
