@@ -4,6 +4,7 @@ import {
   Post,
   Body,
   Put,
+  Delete,
   Param,
   NotFoundException,
 } from '@nestjs/common';
@@ -40,4 +41,9 @@ export class MessagesController {
   updateMessage(@Param('id') id: string, @Body() body: UpdateMessageDto) {
     return this.messagesService.updateMessage(id, body.content);
   }  
+  
+  @Delete(':id')
+  deleteMessage(@Param(id) id: string) {
+    // TODO: Add service
+  }
 }
