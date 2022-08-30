@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { readFile, writeFile } from 'fs/promises';
 
 @Injectable()
@@ -45,7 +45,13 @@ export class MessagesRepository {
   async deleteMessage(id: string) {
     const contents = await readFile('messages.json', 'utf8');
     const messages = JSON.parse(contents);
-    delete messages[id];
+    const message = messages[id];
+
+    if (message) {
+      delete messages[id];
+    } else {
+      throw new NotFoundException('message not found');
+    }
    }
 
 }
