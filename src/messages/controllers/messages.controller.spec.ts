@@ -19,4 +19,13 @@ describe('MessagesController', () => {
   it('should be defined', () => {
     expect(controller).toBeDefined();
   });
+
+  describe('listMessages', () => {
+    it('should return an array of messages', async () => {
+      const result = ['test'];
+      jest.spyOn(repo, 'findAll').mockImplementation(() => result);
+
+      expect(await controller.listMessages()).toBe(result);
+    });
+  });
 });
