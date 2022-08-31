@@ -28,4 +28,13 @@ describe('MessagesController', () => {
       expect(await controller.listMessages()).toBe(result);
     });
   });
+
+  describe('getMessage', () => {
+    it('should return a single message', async () => {
+      const result = 'Hello World';
+      jest.spyOn(repo, 'findOne').mockImplementation(() => result);
+
+      expect(await controller.getMessage('1')).toBe(result);
+    });
+  });
 });
