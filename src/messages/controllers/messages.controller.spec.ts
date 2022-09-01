@@ -37,4 +37,15 @@ describe('MessagesController', () => {
       expect(await controller.getMessage('1')).toBe(result);
     });
   });
+
+  describe('createMessage', () => {
+    it('should create and return a message', async () => {
+      const result = { id: '1', content: 'Hello World' };
+      jest.spyOn(repo, 'create').mockImplementation(() => result);
+
+      expect(await controller.createMessage({ content: 'Hello World' })).toBe(
+        result,
+      );
+    });
+  });
 });
