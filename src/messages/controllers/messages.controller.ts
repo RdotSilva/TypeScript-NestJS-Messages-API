@@ -40,10 +40,10 @@ export class MessagesController {
   @Put(':id/update')
   updateMessage(@Param('id') id: string, @Body() body: UpdateMessageDto) {
     return this.messagesService.updateMessage(id, body.content);
-  }  
-  
+  }
+
   @Delete(':id')
-  deleteMessage(@Param(id) id: string) {
-    // TODO: Add service
+  deleteMessage(@Param('id') id: string) {
+    return this.messagesService.deleteMessage(id);
   }
 }
