@@ -59,4 +59,10 @@ describe('MessagesController', () => {
       ).toBe(result);
     });
   });
+
+  describe('deleteMessage', () => {
+    it('TODO', async () => {
+      // TODO: Add logic for testing delete
+    });
+  });
 });
