@@ -48,4 +48,15 @@ describe('MessagesController', () => {
       );
     });
   });
+
+  describe('updateMessage', () => {
+    it('should update and return a message', async () => {
+      const result = { id: '1', content: 'Hello World Updated' };
+      jest.spyOn(repo, 'updateMessage').mockImplementation(() => result);
+
+      expect(
+        await controller.updateMessage('1', { content: 'Hello World Updated' }),
+      ).toBe(result);
+    });
+  });
 });
